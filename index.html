@@ -1,1 +1,328 @@
-<!-- Portfolio site - paste your HTML content here -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harshitha Madana</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Sora:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --purple: #7C6FF7;
+  --lavender: #B8B2FF;
+  --soft: #EEE9FF;
+  --peach: #FFE8DC;
+  --dark: #1A1225;
+  --mid: #3D2F5E;
+  --muted: #8A7DAA;
+  --white: #FDFBFF;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--dark); overflow-x: hidden; }
+
+/* FADE IN */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; width: 100%; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0 3rem; height: 58px;
+  background: rgba(253,251,255,0.85); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(124,111,247,0.1);
+}
+.nav-name { font-family: 'Sora', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--purple); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { font-size: 0.82rem; color: var(--muted); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+.nav-links a:hover { color: var(--purple); }
+
+/* HERO */
+.hero {
+  min-height: 100vh; display: flex; align-items: center;
+  padding: 100px 3rem 60px;
+  background: linear-gradient(135deg, #FAF8FF 0%, #F0ECFF 50%, #FFE8DC 100%);
+  position: relative; overflow: hidden;
+}
+.hero-bg-circle {
+  position: absolute; border-radius: 50%;
+  background: radial-gradient(circle, rgba(124,111,247,0.15), transparent 70%);
+  pointer-events: none;
+}
+.circle1 { width: 600px; height: 600px; top: -100px; right: -100px; }
+.circle2 { width: 400px; height: 400px; bottom: -50px; left: -100px; }
+.hero-inner { max-width: 780px; margin: 0 auto; position: relative; z-index: 1; }
+.hero-tag { display: inline-block; background: rgba(124,111,247,0.12); color: var(--purple); font-size: 0.78rem; font-weight: 600; padding: 5px 14px; border-radius: 20px; margin-bottom: 1.5rem; letter-spacing: 0.04em; }
+.hero h1 { font-family: 'Sora', sans-serif; font-size: clamp(2.8rem, 6vw, 4.5rem); font-weight: 800; line-height: 1.08; letter-spacing: -0.03em; margin-bottom: 1.4rem; }
+.hero h1 .line2 { color: var(--purple); }
+.hero-sub { font-size: 1.05rem; color: #6B5E8A; line-height: 1.75; max-width: 500px; margin-bottom: 2.5rem; }
+.hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn { font-size: 0.85rem; font-weight: 600; padding: 11px 22px; border-radius: 8px; text-decoration: none; transition: all 0.2s; }
+.btn-purple { background: var(--purple); color: white; }
+.btn-purple:hover { background: #6A5EE0; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(124,111,247,0.3); }
+.btn-ghost { border: 1.5px solid rgba(124,111,247,0.3); color: var(--purple); background: transparent; }
+.btn-ghost:hover { background: rgba(124,111,247,0.06); transform: translateY(-2px); }
+
+
+/* SECTIONS */
+section { padding: 90px 3rem; }
+.section-inner { max-width: 780px; margin: 0 auto; }
+.eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--purple); margin-bottom: 0.5rem; }
+.section-title { font-family: 'Sora', sans-serif; font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.6rem; line-height: 1.15; }
+.section-sub { color: var(--muted); font-size: 0.95rem; margin-bottom: 3rem; }
+
+/* ABOUT */
+.about-section { background: var(--soft); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+.about-card { background: white; border-radius: 14px; padding: 1.4rem; border: 1px solid rgba(124,111,247,0.12); }
+.about-card-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); margin-bottom: 0.5rem; }
+.about-card p { font-size: 0.88rem; color: #5A4E72; line-height: 1.65; }
+
+/* EXPERIENCE TIMELINE */
+.exp-section { background: white; }
+.timeline { position: relative; padding-left: 2rem; }
+.timeline::before { content: ''; position: absolute; left: 0; top: 6px; bottom: 6px; width: 2px; background: linear-gradient(to bottom, var(--purple), var(--lavender), transparent); border-radius: 2px; }
+.tl-item { position: relative; margin-bottom: 2.8rem; }
+.tl-item:last-child { margin-bottom: 0; }
+.tl-dot { position: absolute; left: -2rem; top: 5px; width: 10px; height: 10px; border-radius: 50%; background: var(--purple); border: 2px solid white; box-shadow: 0 0 0 3px rgba(124,111,247,0.2); transform: translateX(-4px); }
+.tl-date { font-size: 0.73rem; font-weight: 600; color: var(--purple); background: rgba(124,111,247,0.08); padding: 2px 9px; border-radius: 4px; display: inline-block; margin-bottom: 0.4rem; }
+.tl-role { font-family: 'Sora', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.15rem; }
+.tl-company { font-size: 0.83rem; color: var(--muted); margin-bottom: 0.8rem; }
+.tl-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.35rem; }
+.tl-bullets li { font-size: 0.86rem; color: #5A4E72; line-height: 1.6; padding-left: 1rem; position: relative; }
+.tl-bullets li::before { content: ''; position: absolute; left: 0; top: 9px; width: 4px; height: 4px; border-radius: 50%; background: var(--lavender); }
+
+/* PROJECTS */
+.proj-section { background: linear-gradient(180deg, #FAF8FF, var(--white)); }
+.projects-grid { display: grid; gap: 1.2rem; }
+.proj-card { background: white; border-radius: 16px; padding: 1.8rem; border: 1px solid rgba(124,111,247,0.12); transition: all 0.25s; position: relative; overflow: hidden; }
+.proj-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--purple), var(--lavender)); opacity: 0; transition: opacity 0.25s; }
+.proj-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(124,111,247,0.12); border-color: rgba(124,111,247,0.25); }
+.proj-card:hover::before { opacity: 1; }
+.proj-card.featured { border-color: rgba(124,111,247,0.3); background: linear-gradient(135deg, #FAF8FF, white); }
+.proj-card.featured::before { opacity: 1; }
+.proj-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.6rem; }
+.proj-name { font-family: 'Sora', sans-serif; font-size: 1.05rem; font-weight: 700; }
+.proj-badge { font-size: 0.7rem; font-weight: 600; padding: 3px 10px; border-radius: 20px; }
+.badge-live { background: #E8F5EE; color: #2D7A4F; }
+.badge-wip { background: rgba(124,111,247,0.1); color: var(--purple); }
+.badge-sys { background: #EEF2FF; color: #4A5490; }
+.proj-desc { font-size: 0.87rem; color: #5A4E72; line-height: 1.65; margin-bottom: 1rem; }
+.proj-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
+.tag { font-size: 0.72rem; background: var(--soft); color: var(--purple); padding: 3px 10px; border-radius: 20px; font-weight: 500; }
+.proj-links { display: flex; gap: 1rem; }
+.proj-link { font-size: 0.82rem; color: var(--purple); text-decoration: none; font-weight: 600; }
+.proj-link:hover { text-decoration: underline; }
+
+/* SKILLS */
+.skills-section { background: var(--dark); }
+.skills-section .eyebrow { color: var(--lavender); }
+.skills-section .section-title { color: white; }
+.skills-section .section-sub { color: rgba(255,255,255,0.5); }
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
+.skill-group { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.3rem; }
+.skill-group-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--lavender); margin-bottom: 0.9rem; }
+.skill-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.skill-pill { font-size: 0.75rem; background: rgba(184,178,255,0.12); color: rgba(255,255,255,0.8); padding: 3px 10px; border-radius: 20px; border: 1px solid rgba(184,178,255,0.2); }
+
+footer { background: var(--dark); border-top: 1px solid rgba(255,255,255,0.06); text-align: center; padding: 2.5rem; color: rgba(255,255,255,0.4); font-size: 0.82rem; }
+footer a { color: var(--lavender); text-decoration: none; }
+footer a:hover { color: white; }
+
+@media (max-width: 640px) {
+  nav { padding: 0 1.2rem; }
+  .hero { padding: 90px 1.5rem 60px; }
+  section { padding: 70px 1.5rem; }
+  .about-grid { grid-template-columns: 1fr; }
+  .hero-stats { gap: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-name">HM</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-bg-circle circle1"></div>
+  <div class="hero-bg-circle circle2"></div>
+  <div class="hero-inner reveal">
+    <div class="hero-tag">Open to internships · Summer 2026</div>
+    <h1>Hi, I'm<br><span class="line2">Harshitha Madana.</span></h1>
+    <p class="hero-sub">CS + Data Visualization student at UW Bothell. I build AI-powered products that actually help people, from Socratic tutoring apps to RAG pipelines for document intelligence.</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn btn-purple">See my work</a>
+      <a href="https://linkedin.com/in/harshithamadana" target="_blank" class="btn btn-ghost">LinkedIn</a>
+      <a href="https://github.com/harshithamadana" target="_blank" class="btn btn-ghost">GitHub</a>
+      <a href="mailto:hmadana@uw.edu" class="btn btn-ghost">Email</a>
+    </div>
+
+  </div>
+</div>
+
+<section class="about-section" id="about">
+  <div class="section-inner reveal">
+    <p class="eyebrow">About me</p>
+    <h2 class="section-title">Building at the intersection<br>of AI and people.</h2>
+    <p class="section-sub">Junior at UW Bothell pursuing a double degree in CS and Data Visualization.</p>
+    <div class="about-grid">
+      <div class="about-card">
+        <div class="about-card-label">Education</div>
+        <p>BS Computer Science + BA Data Visualization<br>University of Washington Bothell<br>Expected June 2027</p>
+      </div>
+      <div class="about-card">
+        <div class="about-card-label">Currently</div>
+        <p>AI/Data Extern at Outamation, building RAG pipelines for mortgage document processing with Gemini and Mistral.</p>
+      </div>
+      <div class="about-card">
+        <div class="about-card-label">Interests</div>
+        <p>AI products, education technology, full-stack development, and making complex systems feel approachable.</p>
+      </div>
+      <div class="about-card">
+        <div class="about-card-label">Community</div>
+        <p>Senior Admin Officer at Google Developer's Group UWB. I organize workshops and events for 100+ students.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="exp-section" id="experience">
+  <div class="section-inner reveal">
+    <p class="eyebrow">Experience</p>
+    <h2 class="section-title">Where I've worked.</h2>
+    <p class="section-sub">Three internships across AI, software engineering, and web development.</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Jan 2026 – Present</div>
+        <div class="tl-role">AI / Data Extern</div>
+        <div class="tl-company">Outamation · Remote</div>
+        <ul class="tl-bullets">
+          <li>Building Python-based document parsing workflows to convert unstructured mortgage files into structured, searchable data.</li>
+          <li>Implementing RAG pipelines with vector search and LLMs (Gemini, Mistral) to enable querying over 200-page documents.</li>
+          <li>Evaluating OCR engines and building intelligent field extraction and metadata tagging systems.</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">July – Sept 2025</div>
+        <div class="tl-role">Software / AI Intern</div>
+        <div class="tl-company">Adaverse Technologies · Remote</div>
+        <ul class="tl-bullets">
+          <li>Led QA testing across React frontend and Node.js backend, reducing critical bugs by 30%.</li>
+          <li>Defined user stories and functional requirements using Figma and Canva, increasing team velocity by 15%.</li>
+          <li>Collaborated on AI feature design, contributing to a 10% increase in positive user feedback.</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">June – Sept 2025</div>
+        <div class="tl-role">Web Developer Intern</div>
+        <div class="tl-company">Mauve Robotics · Remote</div>
+        <ul class="tl-bullets">
+          <li>Built the company website in HTML/CSS and JavaScript, improving responsive design for a 20% increase in user engagement.</li>
+          <li>Modernized site layouts and visuals, increasing online visibility by 25%.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="proj-section" id="projects">
+  <div class="section-inner reveal">
+    <p class="eyebrow">Projects</p>
+    <h2 class="section-title">Things I've built.</h2>
+    <p class="section-sub">A mix of AI products, systems work, and design-driven apps.</p>
+    <div class="projects-grid">
+      <div class="proj-card featured">
+        <div class="proj-top">
+          <div class="proj-name">CodeBuddy</div>
+          <span class="proj-badge badge-live">Live</span>
+        </div>
+        <p class="proj-desc">An AI tutoring app for students learning to code. Guide mode uses Socratic teaching, asking questions instead of giving answers. Deep Dive mode explains concepts from scratch. Built with a 3-layer prompt architecture that controls AI behavior entirely through configuration.</p>
+        <div class="proj-tags">
+          <span class="tag">React</span><span class="tag">Node.js</span><span class="tag">Claude API</span><span class="tag">Vercel</span><span class="tag">Prompt Engineering</span>
+        </div>
+        <div class="proj-links">
+          <a href="https://code-buddy-nu.vercel.app" target="_blank" class="proj-link">Live demo →</a>
+          <a href="https://github.com/harshithamadana/CodeBuddy" target="_blank" class="proj-link">GitHub →</a>
+        </div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-top">
+          <div class="proj-name">SafeSpace AI</div>
+          <span class="proj-badge badge-wip">In progress</span>
+        </div>
+        <p class="proj-desc">An AI-powered mental health platform. Conducted user research with 10+ participants, designed 15+ UI screens in Figma, and building modular frontend components using Cursor.</p>
+        <div class="proj-tags">
+          <span class="tag">Figma</span><span class="tag">Cursor</span><span class="tag">UX Research</span><span class="tag">AI</span>
+        </div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-top">
+          <div class="proj-name">Custom Memory Allocator</div>
+          <span class="proj-badge badge-sys">Systems</span>
+        </div>
+        <p class="proj-desc">Implemented a buddy memory allocator in C and ARM assembly for an embedded system. Built low-level OS components including stack and heap initialization, plus custom malloc and free.</p>
+        <div class="proj-tags">
+          <span class="tag">C</span><span class="tag">ARM Assembly</span><span class="tag">Keil</span><span class="tag">Embedded Systems</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="skills-section" id="skills">
+  <div class="section-inner reveal">
+    <p class="eyebrow">Skills</p>
+    <h2 class="section-title">What I work with.</h2>
+    <p class="section-sub">Languages, frameworks, and tools I use regularly.</p>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-group-label">Languages</div>
+        <div class="skill-pills">
+          <span class="skill-pill">Python</span><span class="skill-pill">JavaScript</span><span class="skill-pill">Java</span><span class="skill-pill">C/C++</span><span class="skill-pill">SQL</span><span class="skill-pill">HTML/CSS</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Frameworks</div>
+        <div class="skill-pills">
+          <span class="skill-pill">React</span><span class="skill-pill">Node.js</span><span class="skill-pill">Express</span><span class="skill-pill">NumPy</span><span class="skill-pill">Pandas</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">AI / Data</div>
+        <div class="skill-pills">
+          <span class="skill-pill">Claude API</span><span class="skill-pill">OpenAI API</span><span class="skill-pill">RAG</span><span class="skill-pill">Gemini</span><span class="skill-pill">Mistral</span><span class="skill-pill">Tableau</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Tools</div>
+        <div class="skill-pills">
+          <span class="skill-pill">Git</span><span class="skill-pill">Docker</span><span class="skill-pill">Figma</span><span class="skill-pill">Linux</span><span class="skill-pill">Jira</span><span class="skill-pill">Cursor</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Harshitha Madana · <a href="mailto:hmadana@uw.edu">hmadana@uw.edu</a> · <a href="https://linkedin.com/in/harshithamadana" target="_blank">LinkedIn</a> · <a href="https://github.com/harshithamadana" target="_blank">GitHub</a>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(els => {
+  els.forEach(el => { if (el.isIntersecting) { el.target.classList.add('visible'); obs.unobserve(el.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>
